@@ -1,0 +1,40 @@
+﻿@model Job_Portal_Managment_System.USER_SKILLS
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>USER_SKILLS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JOB_SEEKER_PROFILE.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JOB_SEEKER_PROFILE.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Skill.skillName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Skill.skillName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

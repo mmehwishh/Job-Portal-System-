@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Job_Portal_Managment_System.Controllers.EmployeerController.ApplicantViewModel>
+
+@{
+    ViewBag.Title = "Applicants";
+}
+
+<h2>Applicants for @ViewBag.JobTitle</h2>
+
+@if (!Model.Any())
+{
+    <p>No applicants yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Applied Date</th>
+                <th>Resume</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var applicant in Model)
+            {
+                <tr>
+                    <td>@applicant.FullName</td>
+                    <td>@applicant.Email</td>
+                    <td>@applicant.AppliedDate.ToString("dd MMM yyyy")</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(applicant.resume))
+                        {
+                            <a href="@Url.Content(applicant.resume)" target="_blank" class="btn btn-outline-primary btn-sm">View</a>
+                        }
+                        else
+                        {
+                            <span class="text-muted">No Resume</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("View Profile", "ViewApplicant", new { seekerId = applicant.seekerId }, new { @class = "btn btn-info btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

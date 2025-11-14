@@ -1,0 +1,40 @@
+﻿@model Job_Portal_Managment_System.JOB
+
+@{
+    ViewBag.Title = "Post Job";
+}
+
+<h2>Post a New Job</h2>
+
+@using (Html.BeginForm("PostJob", "Employeer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.job_title)
+            @Html.TextBoxFor(m => m.job_title, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.job_description)
+            @Html.TextAreaFor(m => m.job_description, new { @class = "form-control", rows = 5 })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.location)
+            @Html.TextBoxFor(m => m.location, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.salary)
+            @Html.TextBoxFor(m => m.salary, new { @class = "form-control" })
+        </div>
+
+        <input type="submit" value="Post Job" class="btn btn-primary" />
+        @Html.ActionLink("Back to Dashboard", "Dashboard", null, new { @class = "btn btn-secondary" })
+    </div>
+}

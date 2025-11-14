@@ -1,0 +1,23 @@
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\Job Portal Managment System.dll.config
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\Job Portal Managment System.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\Job Portal Managment System.pdb
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\EntityFramework.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\EntityFramework.SqlServer.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\Microsoft.Web.Infrastructure.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.Helpers.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.Mvc.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.Razor.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.WebPages.Deployment.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.WebPages.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.WebPages.Razor.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\EntityFramework.xml
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\EntityFramework.SqlServer.xml
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.Helpers.xml
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.Mvc.xml
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.Razor.xml
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.WebPages.xml
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.WebPages.Deployment.xml
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\bin\System.Web.WebPages.Razor.xml
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\obj\Debug\Job Portal Managment System.csprojResolveAssemblyReference.cache
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\obj\Debug\Job Portal Managment System.dll
+c:\users\mehwish\documents\visual studio 2013\Projects\Job Portal Managment System\Job Portal Managment System\obj\Debug\Job Portal Managment System.pdb

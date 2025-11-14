@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JobDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="APPLICATIONS">
+    <Key>
+      <PropertyRef Name="application_id" />
+    </Key>
+    <Property Name="application_id" Type="int" Nullable="false" />
+    <Property Name="job_id" Type="int" Nullable="false" />
+    <Property Name="seeker_id" Type="int" Nullable="false" />
+    <Property Name="applied_date" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EMPLOYERS">
+    <Key>
+      <PropertyRef Name="employer_id" />
+    </Key>
+    <Property Name="employer_id" Type="int" Nullable="false" />
+    <Property Name="company_name" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="industry" Type="varchar" MaxLength="100" />
+    <Property Name="company_description" Type="varchar(max)" />
+    <Property Name="website" Type="varchar" MaxLength="255" />
+    <Property Name="location" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="JOB_SEEKER_PROFILE">
+    <Key>
+      <PropertyRef Name="seeker_id" />
+    </Key>
+    <Property Name="seeker_id" Type="int" Nullable="false" />
+    <Property Name="dob" Type="datetime" />
+    <Property Name="gender" Type="varchar" MaxLength="10" />
+    <Property Name="phone" Type="varchar" MaxLength="20" />
+    <Property Name="address" Type="varchar" MaxLength="555" />
+    <Property Name="experience_level" Type="varchar" MaxLength="50" />
+    <Property Name="education" Type="varchar" MaxLength="500" />
+    <Property Name="resume_file" Type="varchar" MaxLength="255" />
+    <Property Name="ProfilePicturePath" Type="nvarchar" MaxLength="255" />
+    <Property Name="Bio" Type="varchar" MaxLength="400" />
+  </EntityType>
+  <EntityType Name="JOBS">
+    <Key>
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="job_id" Type="int" Nullable="false" />
+    <Property Name="employer_id" Type="int" Nullable="false" />
+    <Property Name="job_title" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="job_description" Type="varchar(max)" />
+    <Property Name="requirements" Type="varchar" MaxLength="1000" />
+    <Property Name="location" Type="varchar" MaxLength="255" />
+    <Property Name="salary_range" Type="varchar" MaxLength="100" />
+    <Property Name="job_type" Type="varchar" MaxLength="50" />
+    <Property Name="posted_date" Type="datetime" />
+    <Property Name="expiry_date" Type="datetime" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="NOTIFICATIONS">
+    <Key>
+      <PropertyRef Name="notification_id" />
+    </Key>
+    <Property Name="notification_id" Type="int" Nullable="false" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="message" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="read_status" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="SAVED_JOBS">
+    <Key>
+      <PropertyRef Name="seeker_id" />
+      <PropertyRef Name="job_id" />
+    </Key>
+    <Property Name="seeker_id" Type="int" Nullable="false" />
+    <Property Name="job_id" Type="int" Nullable="false" />
+    <Property Name="saved_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Skills">
+    <Key>
+      <PropertyRef Name="skillID" />
+    </Key>
+    <Property Name="skillID" Type="int" Nullable="false" />
+    <Property Name="skillName" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USER_SKILLS">
+    <Key>
+      <PropertyRef Name="JobSeekerSkillID" />
+    </Key>
+    <Property Name="JobSeekerSkillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="seeker_id" Type="int" />
+    <Property Name="SkillID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="full_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password_hash" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="role" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="created_at" Type="datetime" />
+    <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__APPLICATI__job_i__5EBF139D">
+    <End Role="JOBS" Type="Self.JOBS" Multiplicity="1" />
+    <End Role="APPLICATIONS" Type="Self.APPLICATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOBS">
+        <PropertyRef Name="job_id" />
+      </Principal>
+      <Dependent Role="APPLICATIONS">
+        <PropertyRef Name="job_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__APPLICATI__seeke__5FB337D6">
+    <End Role="JOB_SEEKER_PROFILE" Type="Self.JOB_SEEKER_PROFILE" Multiplicity="1" />
+    <End Role="APPLICATIONS" Type="Self.APPLICATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOB_SEEKER_PROFILE">
+        <PropertyRef Name="seeker_id" />
+      </Principal>
+      <Dependent Role="APPLICATIONS">
+        <PropertyRef Name="seeker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__JOBS__employer_i__5535A963">
+    <End Role="EMPLOYERS" Type="Self.EMPLOYERS" Multiplicity="1" />
+    <End Role="JOBS" Type="Self.JOBS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYERS">
+        <PropertyRef Name="employer_id" />
+      </Principal>
+      <Dependent Role="JOBS">
+        <PropertyRef Name="employer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SAVED_JOB__job_i__59FA5E80">
+    <End Role="JOBS" Type="Self.JOBS" Multiplicity="1" />
+    <End Role="SAVED_JOBS" Type="Self.SAVED_JOBS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOBS">
+        <PropertyRef Name="job_id" />
+      </Principal>
+      <Dependent Role="SAVED_JOBS">
+        <PropertyRef Name="job_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SAVED_JOB__seeke__59063A47">
+    <End Role="JOB_SEEKER_PROFILE" Type="Self.JOB_SEEKER_PROFILE" Multiplicity="1" />
+    <End Role="SAVED_JOBS" Type="Self.SAVED_JOBS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOB_SEEKER_PROFILE">
+        <PropertyRef Name="seeker_id" />
+      </Principal>
+      <Dependent Role="SAVED_JOBS">
+        <PropertyRef Name="seeker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USER_SKIL__seeke__04E4BC85">
+    <End Role="JOB_SEEKER_PROFILE" Type="Self.JOB_SEEKER_PROFILE" Multiplicity="0..1" />
+    <End Role="USER_SKILLS" Type="Self.USER_SKILLS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JOB_SEEKER_PROFILE">
+        <PropertyRef Name="seeker_id" />
+      </Principal>
+      <Dependent Role="USER_SKILLS">
+        <PropertyRef Name="seeker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USER_SKIL__Skill__05D8E0BE">
+    <End Role="Skills" Type="Self.Skills" Multiplicity="1" />
+    <End Role="USER_SKILLS" Type="Self.USER_SKILLS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skills">
+        <PropertyRef Name="skillID" />
+      </Principal>
+      <Dependent Role="USER_SKILLS">
+        <PropertyRef Name="SkillID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLOYERS_USERS">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="EMPLOYERS" Type="Self.EMPLOYERS" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="EMPLOYERS">
+        <PropertyRef Name="employer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JOB_SEEKER_PROFILE_USERS">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="JOB_SEEKER_PROFILE" Type="Self.JOB_SEEKER_PROFILE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="JOB_SEEKER_PROFILE">
+        <PropertyRef Name="seeker_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTIFICATIONS_USERS">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+    <End Role="NOTIFICATIONS" Type="Self.NOTIFICATIONS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="NOTIFICATIONS">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="JobDBModelStoreContainer">
+    <EntitySet Name="APPLICATIONS" EntityType="Self.APPLICATIONS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLOYERS" EntityType="Self.EMPLOYERS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JOB_SEEKER_PROFILE" EntityType="Self.JOB_SEEKER_PROFILE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JOBS" EntityType="Self.JOBS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NOTIFICATIONS" EntityType="Self.NOTIFICATIONS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SAVED_JOBS" EntityType="Self.SAVED_JOBS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER_SKILLS" EntityType="Self.USER_SKILLS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__APPLICATI__job_i__5EBF139D" Association="Self.FK__APPLICATI__job_i__5EBF139D">
+      <End Role="JOBS" EntitySet="JOBS" />
+      <End Role="APPLICATIONS" EntitySet="APPLICATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__APPLICATI__seeke__5FB337D6" Association="Self.FK__APPLICATI__seeke__5FB337D6">
+      <End Role="JOB_SEEKER_PROFILE" EntitySet="JOB_SEEKER_PROFILE" />
+      <End Role="APPLICATIONS" EntitySet="APPLICATIONS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__JOBS__employer_i__5535A963" Association="Self.FK__JOBS__employer_i__5535A963">
+      <End Role="EMPLOYERS" EntitySet="EMPLOYERS" />
+      <End Role="JOBS" EntitySet="JOBS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SAVED_JOB__job_i__59FA5E80" Association="Self.FK__SAVED_JOB__job_i__59FA5E80">
+      <End Role="JOBS" EntitySet="JOBS" />
+      <End Role="SAVED_JOBS" EntitySet="SAVED_JOBS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SAVED_JOB__seeke__59063A47" Association="Self.FK__SAVED_JOB__seeke__59063A47">
+      <End Role="JOB_SEEKER_PROFILE" EntitySet="JOB_SEEKER_PROFILE" />
+      <End Role="SAVED_JOBS" EntitySet="SAVED_JOBS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USER_SKIL__seeke__04E4BC85" Association="Self.FK__USER_SKIL__seeke__04E4BC85">
+      <End Role="JOB_SEEKER_PROFILE" EntitySet="JOB_SEEKER_PROFILE" />
+      <End Role="USER_SKILLS" EntitySet="USER_SKILLS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USER_SKIL__Skill__05D8E0BE" Association="Self.FK__USER_SKIL__Skill__05D8E0BE">
+      <End Role="Skills" EntitySet="Skills" />
+      <End Role="USER_SKILLS" EntitySet="USER_SKILLS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLOYERS_USERS" Association="Self.FK_EMPLOYERS_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="EMPLOYERS" EntitySet="EMPLOYERS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JOB_SEEKER_PROFILE_USERS" Association="Self.FK_JOB_SEEKER_PROFILE_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="JOB_SEEKER_PROFILE" EntitySet="JOB_SEEKER_PROFILE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTIFICATIONS_USERS" Association="Self.FK_NOTIFICATIONS_USERS">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="NOTIFICATIONS" EntitySet="NOTIFICATIONS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

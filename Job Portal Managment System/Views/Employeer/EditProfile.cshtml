@@ -1,0 +1,45 @@
+﻿@model Job_Portal_Managment_System.EMPLOYER
+
+@{
+    ViewBag.Title = "Edit Profile";
+}
+
+<h2>Edit Company Profile</h2>
+
+@using (Html.BeginForm("EditProfile", "Employeer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.company_name)
+            @Html.TextBoxFor(m => m.company_name, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.industry)
+            @Html.TextBoxFor(m => m.industry, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.company_description)
+            @Html.TextAreaFor(m => m.company_description, new { @class = "form-control", rows = 5 })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.website)
+            @Html.TextBoxFor(m => m.website, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.location)
+            @Html.TextBoxFor(m => m.location, new { @class = "form-control" })
+        </div>
+
+        <input type="submit" value="Save Changes" class="btn btn-primary" />
+        @Html.ActionLink("Back to Dashboard", "Dashboard", null, new { @class = "btn btn-secondary" })
+    </div>
+}

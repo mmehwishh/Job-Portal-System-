@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Job_Portal_Managment_System.NOTIFICATION>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.message)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.created_at)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.read_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USER.full_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.created_at)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.read_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USER.full_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.notification_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.notification_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.notification_id })
+        </td>
+    </tr>
+}
+
+</table>

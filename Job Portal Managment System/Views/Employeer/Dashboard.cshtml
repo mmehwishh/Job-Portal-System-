@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+<h2>Welcome, @ViewBag.CompanyName</h2>
+
+<div class="card mt-4">
+    <div class="card-body">
+        <h4>Total Jobs Posted: @ViewBag.TotalJobs</h4>
+        <h4>Total Applications Received: @ViewBag.TotalApplications</h4>
+        <h4>Unread Notifications: @ViewBag.UnreadNotifications</h4>
+    </div>
+</div>
+
+<a href="@Url.Action("MyJobs", "Employer")" class="btn btn-primary mt-3">View My Jobs</a>
+<a href="@Url.Action("CreateProfile", "Employer")" class="btn btn-secondary mt-3">Edit Profile</a>
+

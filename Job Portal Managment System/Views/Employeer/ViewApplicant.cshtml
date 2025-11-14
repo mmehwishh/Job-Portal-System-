@@ -1,0 +1,29 @@
+﻿@model Job_Portal_Managment_System.JOB_SEEKER_PROFILE
+
+@{
+    ViewBag.Title = "View Applicant";
+}
+
+<h2>Applicant Profile</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4>@Model.seeker_id</h4>
+        <p><strong>Email:</strong> @Model.email</p>
+        <p><strong>Skills:</strong> @Model.skills</p>
+        <p><strong>Experience:</strong> @Model.experience</p>
+        <p><strong>Education:</strong> @Model.education</p>
+
+        @if (!string.IsNullOrEmpty(Model.resume_file))
+        {
+            <a href="@Url.Content(Model.resume_file)" class="btn btn-outline-primary" target="_blank">View Resume</a>
+        }
+        else
+        {
+            <p class="text-muted">No resume uploaded.</p>
+        }
+
+        <br />
+        @Html.ActionLink("Back to Applicants", "MyJobs", null, new { @class = "btn btn-secondary mt-2" })
+    </div>
+</div>

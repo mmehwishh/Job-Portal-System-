@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Job_Portal_Managment_System.NOTIFICATION>
+
+@{
+    ViewBag.Title = "Notifications";
+}
+
+<h2>Notifications</h2>
+
+@if (!Model.Any())
+{
+    <p>No notifications available.</p>
+}
+else
+{
+    <ul class="list-group">
+        @foreach (var n in Model)
+        {
+            <li class="list-group-item">
+                <strong>@n.message</strong>
+                <br />
+                <small class="text-muted">@n.created_at.ToString("dd MMM yyyy hh:mm tt")</small>
+            </li>
+        }
+    </ul>
+}

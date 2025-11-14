@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Job_Portal_Managment_System.USER_SKILLS>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JOB_SEEKER_PROFILE.gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Skill.skillName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JOB_SEEKER_PROFILE.gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Skill.skillName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.JobSeekerSkillID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.JobSeekerSkillID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.JobSeekerSkillID })
+        </td>
+    </tr>
+}
+
+</table>
